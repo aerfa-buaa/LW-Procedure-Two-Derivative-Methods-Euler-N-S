@@ -154,9 +154,9 @@ void CADSolver::Splitting_char(void)
 	// Splitting_char_y(0., 1.0);
 
 #pragma omp parallel for private(ss1, ss2, pp1, pp2)
-	for (long jCell = nb; jCell < nCellYo_L; jCell++)
+	for (long jCell = nb - 4; jCell < nCellYo_L + 4; jCell++)
 	{
-		for (long iCell = nb; iCell < nCell_L; iCell++)
+		for (long iCell = nb - 4; iCell < nCell_L + 4; iCell++)
 		{
 			for (long nn = 0; nn < 4; nn++)
 			{
@@ -1596,9 +1596,9 @@ void CADSolver::df_dx_dy(void) //   OpenMP 并行
 {
 
 #pragma omp parallel for num_threads(NumberThreads)
-	for (long jCell = nb; jCell < nCellYo_L; jCell++)
+	for (long jCell = nb - 4; jCell < nCellYo_L + 4; jCell++)
 	{
-		for (long iCell = nb; iCell < nCell_L; iCell++)
+		for (long iCell = nb - 4; iCell < nCell_L + 4; iCell++)
 		{
 
 			mydouble fz[15], ff[15];
