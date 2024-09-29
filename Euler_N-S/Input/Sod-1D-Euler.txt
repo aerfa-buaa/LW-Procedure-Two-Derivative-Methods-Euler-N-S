@@ -1,0 +1,45 @@
+void CADSolver::InputControl_xy(void)
+{
+	unsigned short nSkip = 8, iSkip = 0;
+	mydouble AuxVal_a;
+	NumberThreads = 8;
+
+	nCell = 200;
+	nCellYo = 80;
+	TimeScheme = 33; // RK 33 ; RK 54 ;   LW_New 231; LW_Old 230;  LW_New 341;   LW_Old 340;
+					  // TDMS23_New 923;   TDMS23_Old 9230; TDMS34_New 934; TDMS34_Old 9340;
+	CFL = 1.0;
+	// StopTime = 2.;	  // 总时间
+	StepMax = 500000; // 总步数
+
+	Case_name = 1; // sod:1;  Blast_wave: 2;  order_x: 80; order_xy: 82; vortex: 83;
+					// DoubleMach 22; High_jet 23;
+					// Couette_flow 26; Viscous shock tube: 24;  Kelvin_Helmholtz 25;
+
+	// BoundaryScheme = 0; // periodic 0; Expand 1; reflection_x 2;  Viscous shock tube: 24;
+	SpaceScheme = 53;	// up1:1; WENO5-JS 50;  WENO5-Z 52; TENO5 53; TENO5-A 54; WENO7-JS 70;  WENO7-Z 72;
+	SpaceScheme_cd = 4; // up1:1; WENO5-JS负50; WENO5-JS正 51;
+	char_scheme = 1;
+	Local_Lax_Friedrichs = 0; // Local 1; Global 0;
+	Case_1D_or_2D = 1;		  // 1D 1; 2D 2;
+
+
+	//___________________positivity_____________________
+	positivity_flag = 0; // 保正性
+	positivity_flag_LW = 0;
+	//___________________Viscous_____________________
+	Viscous_flag = 0; // Non_viscous: 0 ;   Viscous:1
+	Viscous_cd = 6;
+	LW_Viscous_cd = 4;
+	//________________________________________
+	nb = 9; // 扩展单元数
+	nCell_2L = nCell + 2 * nb, nCellYo_2L = nCellYo + 2 * nb;
+	nCell_L = nCell + nb, nCellYo_L = nCellYo + nb;
+	nVar = 4;
+	nDegree = 3;
+	ska = 1;
+	show_n = 200;
+	cout << "---------------- Input -----------------" << endl;
+	Intial_zone();
+	Intial_date();
+}
