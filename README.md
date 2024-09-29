@@ -1,4 +1,4 @@
-# LW-Procedure-Two-Derivative-Methods-Euler-N-S
+# LW-Procedure-Two-Derivative-Methods-Euler-N-S.
 
 This work we introduce a novel Lax-Wendroff type procedure for two-derivative time-
 stepping methods on the Euler and Navier-Stokes equations.
